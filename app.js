@@ -1,3 +1,32 @@
 const { FetchKomik } = require("./nodejs-api/hal-awal");
 
-FetchKomik("mangaid");
+console.log("start script");
+// FetchKomik("manhwaindo");
+
+FetchKomik("komikstation");
+
+// setInterval(() => {
+//   console.log("manhwaindo Start");
+//   FetchKomik("manhwaindo"); // Setiap 3 Jam
+// }, 10800000);
+
+// setInterval(() => {
+//   console.log("mangaid Start");
+//   FetchKomik("mangaid"); // Setiap 7 Jam
+// }, 25200000);
+
+// FetchKomik("mangaid");
+
+// const data = ["manhwaindo", "mangaid"];
+
+// (async () => {
+//   await FetchKomik("manhwaindo");
+
+//   await FetchKomik("mangaid");
+// })();
+
+//kiryuu
+//mangaid
+//manhwaindo
+//sektekomik
+//komikstation

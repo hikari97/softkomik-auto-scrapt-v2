@@ -1,7 +1,7 @@
 const { PeriksaChapter } = require("./periksa-data");
 const fetch = require("node-fetch");
-
 const { domain, mainDomain } = require("./../config");
+
 //Tampilkan Data Deskripsi Komik Dalam Array
 const ItemsFetch = (title, slug, lastch, data) => {
   if (lastch === "") {
@@ -24,10 +24,9 @@ const ItemsFetch = (title, slug, lastch, data) => {
       return a - b;
     });
     // Loop
-    let nmr = 0;
     dataS.map(async (chapter, index) => {
       let csr = chapter.replace("-", ".");
-      let chr = csr.replace("/", '');
+      let chr = csr.replace("/", "");
       let ch = Number(chr);
       let lastCh = Number(lastch);
       // let lastCh = Number(4);
@@ -43,9 +42,11 @@ const ItemsFetch = (title, slug, lastch, data) => {
       .then((res) => res.json())
       .then((data) => {
         if (!data) {
-          fetch(`${domain}/api/input-komik/${slug}`)
+          fetch(
+            `${domain}/firebase?title=${title}&slug=${slug}&deskripsi=komik+belum+ada`
+          )
             .then((res) => res.json())
-            .then((data) => {
+            .then(() => {
               console.log(`komik ${title} sudah di tambah di DB`);
             })
             .catch((err) => {

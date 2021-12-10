@@ -16,7 +16,7 @@ const FetchKomik = async (path) => {
             .catch((err) => {
               console.log(err);
             });
-        }, i * 90000);
+        }, i * 60000);
       });
     })
     .catch((err) => {
