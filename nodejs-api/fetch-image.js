@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 const { copyDomain } = require("./../config");
 
 const FetchImage = async (slug, chapter, img) => {
@@ -6,17 +6,17 @@ const FetchImage = async (slug, chapter, img) => {
     imagesrc: JSON.stringify(img),
   };
 
-  await fetch(`${copyDomain}/request-chapter/${slug}/${chapter}`, {
+  await axios({
+    url:`${copyDomain}/request-chapter/${slug}/${chapter}`,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify(payload),
+    data: JSON.stringify(payload),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
+    .then((ress) => {
+      console.log(ress.data);
       console.log("done");
     });
 };

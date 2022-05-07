@@ -1,14 +1,14 @@
-const { FetchKomik } = require("./nodejs-api/hal-awal");
+const { FetchKomik } = require('./nodejs-api/hal-awal');
 
-console.log("start script");
+console.log('start script');
 // FetchKomik("manhwaindo");
 
-FetchKomik("komikstation");
+FetchKomik('komikcast');
 
-// setInterval(() => {
-//   console.log("manhwaindo Start");
-//   FetchKomik("manhwaindo"); // Setiap 3 Jam
-// }, 10800000);
+setInterval(() => {
+  console.log('komikcast Start');
+  FetchKomik('komikcast'); // Setiap 3 Jam
+}, 10800000);
 
 // setInterval(() => {
 //   console.log("mangaid Start");

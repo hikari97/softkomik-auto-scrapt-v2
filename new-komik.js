@@ -1,34 +1,35 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 const { domain } = require("./config");
 const { ItemsFetch } = require("./nodejs-api/deskripsi");
 
 const data = [
   {
-    title: "yajin-tensei-karate-survivor-in-another-world",
-    slug: "yajin-tensei-karate-survivor-in-another-world",
+    title: "the-strongest-harem-of-nobles",
+    slug: "the-strongest-harem-of-nobles",
   },
 ];
-
+ 
 //manhwaindo
 //mangaid
 //komikstation
+//komikcast
 
 data.map((d, i) => {
   setTimeout(async () => {
-    await FetchDeskripsi(d.slug, "komikstation")
+    await FetchDeskripsi(d.slug, "komikcast")
       .then(() => {
         console.log(`${i + 1}. check : ${d.title}`);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, i * 90000);
+  }, i * 1200000);
 });
 
 const FetchDeskripsi = async (slug, path) => {
-  return await fetch(`${domain}/${path}/${slug}`)
-    .then((res) => res.json())
-    .then(async (data) => {
+  return await axios.get(`${domain}/${path}/${slug}`)
+    .then(async (ress) => {
+      const data = ress.data;
       // console.log(data);
       const sort = data.data.sort(function (a, b) {
         return a - b;
