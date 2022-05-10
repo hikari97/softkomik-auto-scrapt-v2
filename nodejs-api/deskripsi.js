@@ -1,9 +1,9 @@
-const { PeriksaChapter } = require("./periksa-chapter");
-const fetch = require("node-fetch");
-const { domain, mainDomain } = require("./../config");
+const { PeriksaChapter } = require('./periksa-chapter');
+const fetch = require('node-fetch');
+const { domain, mainDomain } = require('./../config');
 //Tampilkan Data Deskripsi Komik Dalam Array
 const ItemsFetch = async (title, slug, lastch, data, path) => {
-  if (lastch === "") {
+  if (lastch === '') {
     //
     // sort data dari kecil ke besar
     let dataS = data.sort(function (a, b) {
@@ -16,7 +16,7 @@ const ItemsFetch = async (title, slug, lastch, data, path) => {
         // image.FetchChapter(slug, chapter);
       }, index * 60000);
     });
-  } else if (lastch != "hasil tidak di temukan") {
+  } else if (lastch != 'hasil tidak di temukan') {
     //
     // sort data dari kecil ke besar
     let dataS = data.sort(function (a, b) {
@@ -24,8 +24,8 @@ const ItemsFetch = async (title, slug, lastch, data, path) => {
     });
     // Loop
     dataS.map(async (chapter, index) => {
-      let csr = chapter.replace("-", ".");
-      let chr = csr.replace("/", "");
+      let csr = chapter.replace('-', '.');
+      let chr = csr.replace('/', '');
       let ch = Number(chr);
       let lastCh = Number(lastch);
       // let lastCh = Number(4);
@@ -41,10 +41,8 @@ const ItemsFetch = async (title, slug, lastch, data, path) => {
       .then((res) => res.json())
       .then(async (data) => {
         if (!data) {
-          console.log("no komik");
-          await fetch(
-            `${domain}/firebase?title=${slug}&slug=${slug}&deskripsi=dari+${path}`
-          )
+          console.log('no komik');
+          await fetch(`${domain}/firebase?title=${slug}&slug=${slug}&deskripsi=dari+${path}`)
             .then((res) => res.json())
             .then(() => {
               console.log(`komik ${title} sudah di tambah di DB Firestore`);

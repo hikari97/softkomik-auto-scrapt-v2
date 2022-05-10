@@ -1,14 +1,14 @@
-const axios = require("axios");
-const { domain } = require("./config");
-const { ItemsFetch } = require("./nodejs-api/deskripsi");
+const axios = require('axios');
+const { domain } = require('./config');
+const { ItemsFetch } = require('./nodejs-api/deskripsi');
 
 const data = [
   {
-    title: "the-strongest-harem-of-nobles",
-    slug: "the-strongest-harem-of-nobles",
-  },
+    title: 'the-shocking-reality-of-a-loan-shark-collecting-money',
+    slug: 'the-shocking-reality-of-a-loan-shark-collecting-money'
+  }
 ];
- 
+
 //manhwaindo
 //mangaid
 //komikstation
@@ -16,7 +16,7 @@ const data = [
 
 data.map((d, i) => {
   setTimeout(async () => {
-    await FetchDeskripsi(d.slug, "komikcast")
+    await FetchDeskripsi(d.slug, 'komikcast')
       .then(() => {
         console.log(`${i + 1}. check : ${d.title}`);
       })
@@ -27,7 +27,8 @@ data.map((d, i) => {
 });
 
 const FetchDeskripsi = async (slug, path) => {
-  return await axios.get(`${domain}/${path}/${slug}`)
+  return await axios
+    .get(`${domain}/${path}/${slug}`)
     .then(async (ress) => {
       const data = ress.data;
       // console.log(data);
